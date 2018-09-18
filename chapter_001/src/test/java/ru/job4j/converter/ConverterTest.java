@@ -32,21 +32,21 @@ public class ConverterTest {
         assertThat(result, is(1));
     }
     /**
-     * Test метода DollarToRuble.
+     * Test метода dollarToRuble.
      */
     @Test
     public void when1DollarToRublesThen60() {
         Converter converter = new Converter();
-        int result = converter.DollarToRuble(1);
+        int result = converter.dollarToRuble(1);
         assertThat(result, is(60));
     }
     /**
-     * Test метода EuroToRuble.
+     * Test метода euroToRuble.
      */
     @Test
     public void when1EuroToRubleThen70() {
         Converter converter = new Converter();
-        int result = converter.EuroToRuble(1);
+        int result = converter.euroToRuble(1);
         assertThat(result, is(70));
     }
 }

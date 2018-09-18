@@ -8,7 +8,10 @@ package ru.job4j.calculator;
 
 public class Calculator {
 
-    // Contains result - cюда записывается результат выполнения методов.
+    /**
+     * Contains result - cюда записывается результат выполнения методов.
+     */
+
 
     private double result;
 
