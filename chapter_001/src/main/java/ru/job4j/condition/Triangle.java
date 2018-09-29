@@ -57,14 +57,6 @@ public class Triangle {
      * @return возвращает true, если длина каждой из сторон треугольника меньше суммы двух других.
      */
     private boolean exist(double ab, double ac, double bc) {
-        boolean condition = false;
-        if (ab < (ac + bc)) {
-            if (ac < (ab + bc)) {
-                if (bc < (ab + ac)) {
-                    condition = true;
-                }
-            }
-        }
-        return condition;
+        return (ab < (ac + bc)) && (ac < (ab + bc)) && (bc < (ab + ac));
     }
 }
