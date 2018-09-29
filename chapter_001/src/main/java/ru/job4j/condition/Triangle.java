@@ -10,11 +10,12 @@ public class Triangle {
         this.b = b;
         this.c = c;
     }
+
     /**
      * Метод вычисления полупериметра по длинам сторон.
-     *
+     * <p>
      * Формула.
-     *
+     * <p>
      * (ab + ac + bc) / 2
      *
      * @param ab расстояние между точками a b
@@ -25,6 +26,7 @@ public class Triangle {
     public double period(double ab, double ac, double bc) {
         return (ab + ac + bc) / 2;
     }
+
     /**
      * Метод должен вычислить площадь треугольника.
      *
@@ -43,21 +45,22 @@ public class Triangle {
         }
         return rsl;
     }
+
     /**
      * Метод проверяет можно ли построить треугольник с такими длинами сторон.
-     *
+     * <p>
      * Подумайте какое надо написать условие, чтобы определить можно ли построить треугольник.
      *
      * @param ab Длина от точки a b.
      * @param ac Длина от точки a c.
      * @param bc Длина от точки b c.
-     * @return возвращает true, если длины всех сторон треугольника имеют положительный знак.
+     * @return возвращает true, если длина каждой из сторон треугольника меньше суммы двух других.
      */
     private boolean exist(double ab, double ac, double bc) {
         boolean condition = false;
-        if (ab > 0) {
-            if (ac > 0) {
-                if (bc > 0) {
+        if (ab < (ac + bc)) {
+            if (ac < (ab + bc)) {
+                if (bc < (ab + ac)) {
                     condition = true;
                 }
             }
