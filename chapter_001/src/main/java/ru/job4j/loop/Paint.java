@@ -1,11 +1,51 @@
 package ru.job4j.loop;
 
 /**
- * @author Popov Mikhail (parsentev@yandex.ru)
+ * @author Popov Mikhail (m.popov83@gmail.com)
  * @version $Id$
  * @since 0.1
  */
 public class Paint {
+    /**
+     * рисует пирамиду из пробелов и знаков ^
+     * @param height высота пирамиды
+     * @return возвращает результат
+     */
+    public String rightTrl(int height) {
+        StringBuilder screen = new StringBuilder();
+        int weight = height;
+        for (int row = 0; row != height; row++) {
+            for (int column = 0; column != weight; column++) {
+                if (row >= column) {
+                    screen.append("^");
+                } else {
+                    screen.append(" ");
+                }
+            }
+            screen.append(System.lineSeparator());
+        }
+        return screen.toString();
+    }
+    /**
+     * рисует пирамиду из пробелов и знаков ^
+     * @param height высота пирамиды
+     * @return возвращает результат
+     */
+    public String leftTrl(int height) {
+        StringBuilder screen = new StringBuilder();
+        int weight = height;
+        for (int row = 0; row != height; row++) {
+            for (int column = 0; column != weight; column++) {
+                if (row >= weight - column - 1) {
+                    screen.append("^");
+                } else {
+                    screen.append(" ");
+                }
+            }
+            screen.append(System.lineSeparator());
+        }
+        return screen.toString();
+    }
     /**
      * рисует пирамиду из пробелов и знаков ^
      * @param height высота пирамиды
@@ -27,3 +67,4 @@ public class Paint {
         return screen.toString();
     }
 }
+
