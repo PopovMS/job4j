@@ -72,21 +72,17 @@ public class Logic {
         for (int row = 0; row != table.length; row++) {
             int hcount = 0;
             int vcount = 0;
-            if (!result) {
-                for (int cell = 0; cell != table.length; cell++) {
-                    if (table[row][cell] == 1){
-                        hcount++;
-                        if (hcount == table.length) {
-                            result = true;
-                        }
-                    }
-                    if (table[cell][row] == 1){
-                        vcount++;
-                        if (vcount == table.length){
-                            result = true;
-                        }
-                    }
+            for (int cell = 0; cell != table.length; cell++) {
+                if (table[row][cell] == 1){
+                    hcount++;
                 }
+                if (table[cell][row] == 1){
+                    vcount++;
+                }
+            }
+            if (hcount == table.length || vcount == table.length){
+                result = true;
+                break;
             }
         }
         return result;
