@@ -15,9 +15,9 @@ public class Board {
     public String paint(int width, int height) {
         StringBuilder screen = new StringBuilder();
         String ln = System.lineSeparator();
-        for (int i = 1; i <= height; i++) {
-            for (int k = 1; k <= width; k++) {
-                if (((i + k) % 2) == 0) {
+        for (int row = 1; row <= height; row++) {
+            for (int cell = 1; cell <= width; cell++) {
+                if (((row + cell) % 2) == 0) {
                     screen.append("X");
                 } else {
                     screen.append(" ");
