@@ -4,7 +4,7 @@ public class Professional {
     public String name;
     public String prof;
 
-    public Professional(){}
+    public Professional() {}
 
     public Professional(String name, String prof) {
         this.name = name;

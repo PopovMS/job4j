@@ -3,7 +3,7 @@ package ru.job4j.professionals;
 public class Build {
     private String build;
 
-    public String getBuild(){
+    public String getBuild() {
         return build;
     }
 
