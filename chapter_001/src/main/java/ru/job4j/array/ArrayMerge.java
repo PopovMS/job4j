@@ -14,29 +14,13 @@ public class ArrayMerge {
     public int[] merge(int[] first, int[] second) {
         int[] result = new int[first.length + second.length];
         int fcount = 0, scount = 0, rcount = 0;
-        while (fcount < first.length | scount < second.length) {
-            if (first[fcount] < second[scount]) {
-                result[rcount] = first[fcount];
-                rcount++;
-                fcount++;
+        while (fcount + scount < result.length) {
+            if (fcount < first.length && scount < second.length) {
+                result[rcount++] = first[fcount] < second[scount] ? first[fcount++] : second[scount++];
+            } else if (fcount < first.length) {
+                result[rcount++] = first[fcount++];
             } else {
-                result[rcount] = second[scount];
-                rcount++;
-                scount++;
-            }
-            if (fcount == first.length) {
-                while (scount < second.length) {
-                    result[rcount] = second[scount];
-                    rcount++;
-                    scount++;
-                }
-            }
-            if (scount == second.length) {
-                while (fcount < first.length) {
-                    result[rcount] = first[fcount];
-                    rcount++;
-                    fcount++;
-                }
+                result[rcount++] = second[scount++];
             }
         }
         return result;
