@@ -7,11 +7,11 @@ public class Build {
         return build;
     }
 
-    public void setBuild(String build){
+    public void setBuild(String build) {
         this.build = build;
     }
 
-    public Build() {}
+    public Build() { }
 
     public Build(String build) {
         this.build = build;
