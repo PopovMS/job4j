@@ -58,6 +58,7 @@ public class Tracker {
                 this.items[index] = null;
                 System.arraycopy(this.items, index + 1, this.items, index, this.items.length - index - 1);
                 this.items[findIndexLastItem()] = null;
+                this.position--;
                 result = true;
             }
         return result;
@@ -68,9 +69,7 @@ public class Tracker {
      * @return массив
      */
     public Item[] findAll() {
-        Item[] result = new Item[findIndexLastItem() + 1];
-        System.arraycopy(this.items, 0, result, 0, result.length);
-        return result;
+        return Arrays.copyOf(items, position);
     }
 
     /**
