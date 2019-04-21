@@ -57,7 +57,6 @@ public class Tracker {
             if (index > -1) {
                 this.items[index] = null;
                 System.arraycopy(this.items, index + 1, this.items, index, this.items.length - index - 1);
-                this.items[findIndexLastItem()] = null;
                 this.position--;
                 result = true;
             }
@@ -88,9 +87,10 @@ public class Tracker {
         }
         Item[] result = new Item[count];
         count = 0;
-        for (int index = 0; index < findIndexLastItem(); index++) {
+        for (int index = 0; index <= findIndexLastItem(); index++) {
             if (this.items[index].getName().equals(key)) {
-                result[count++] = this.items[index];
+                result[count] = this.items[index];
+                count++;
             }
         }
         return result;
