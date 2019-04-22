@@ -104,7 +104,7 @@ public class StartUI {
         System.out.println("------------ Вывод всех заявок --------------");
         int numItem = 0;
         for (Item item : this.tracker.findAll()) {
-            System.out.println(numItem++ + ". " + "name: " + item.getName() + ", " + "desc: " + item.getDecs() + ", " + "id: " + item.getId());
+            System.out.println(String.format("%d. name: %s, desc: %s, id: %s", numItem++, item.getName(), item.getDecs(), item.getId()));
         }
     }
 
@@ -113,7 +113,8 @@ public class StartUI {
      */
     private void editItem() {
         System.out.println("------------ Редактирование заявки --------------");
-        Item item = searchItem();
+        String itemId = this.input.ask("Введите id заявки :");
+        Item item = this.tracker.findById(itemId);
         if (item != null) {
             String name = this.input.ask("Введите новое имя заявки :");
             String desc = this.input.ask("Введите описание заявки :");
@@ -121,7 +122,7 @@ public class StartUI {
             item.setDecs(desc);
             this.tracker.replace(item.getId(), item);
         } else {
-            System.out.println("Заявка с таким именем не найдена");
+            System.out.println("Заявка с таким id не найдена");
         }
 
     }
@@ -131,12 +132,11 @@ public class StartUI {
      */
     private void deleteItem() {
         System.out.println("------------ Удаление заявки --------------------");
-        Item item = searchItem();
-        if (item != null) {
-            this.tracker.delete(item.getId());
+        String itemId = this.input.ask("Введите id заявки :");
+        if (this.tracker.delete(itemId)) {
             System.out.println("Заявка удалена");
         } else {
-            System.out.println("Заявка с таким именем не найдена");
+            System.out.println("Заявка с таким id не найдена");
         }
 
     }
@@ -149,7 +149,7 @@ public class StartUI {
         String itemId = this.input.ask("Введите id заявки :");
         Item item = this.tracker.findById(itemId);
         if (item != null) {
-            System.out.println("name: " + item.getName() + ", " + "desc: " + item.getDecs() + ", " + "id: " + item.getId());
+            System.out.println(String.format("name: %s, desc: %s, id: %s", item.getName(), item.getDecs(), item.getId()));
         } else {
             System.out.println("Заявка с id: " + itemId + " не найдена");
         }
@@ -167,36 +167,16 @@ public class StartUI {
             int numItem = 0;
             System.out.println("--Найдено заявок с этим именем--");
             for (Item item : arr) {
-                System.out.println(numItem++ + ". " + "name: " + item.getName() + ", " + "desc: " + item.getDecs() + ", " + "id: " + item.getId());
+                System.out.println(String.format("%d. name: %s, desc: %s, id: %s", numItem++, item.getName(), item.getDecs(), item.getId()));
             }
         } else {
             System.out.println("Заявка с таким именем не найдена");
         }
     }
-    /**
-     * поиск заявок и выбор из списка с одинаковыми именами
-     * @return возвращает искомую заявку
-     */
-    private Item searchItem() {
-        String replName = this.input.ask("Введите имя заявки :");
-        Item[] arr = this.tracker.findByName(replName);
-        int intNum = 0;
-        Item result = null;
-        if (arr.length != 0) {
-            if (arr.length > 1) {
-                int numItem = 0;
-                System.out.println("--Найдено несколько заявок с этим именем--");
-                for (Item item : arr) {
-                    System.out.println(numItem++ + ". " + "name: " + item.getName() + ", " + "desc: " + item.getDecs() + ", " + "id: " + item.getId());
-                }
-                String num = this.input.ask("Введите номер нужной заявки :");
-                intNum = Integer.parseInt(num);
-            }
-                result = arr[intNum];
-        }
-        return result;
-    }
 
+    /**
+     * Метод выводит в консоль основное меню программы
+     */
     private void showMenu() {
         System.out.println("------------ Меню------------------");
         System.out.println("0. Add new Item.");
@@ -210,7 +190,7 @@ public class StartUI {
 
     /**
      * Запускт программы.
-     * @param args
+     * @param args массив с параметрами
      */
     public static void main(String[] args) {
         new StartUI(new ConsoleInput(), new Tracker()).init();
