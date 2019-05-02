@@ -13,6 +13,10 @@ public class Item {
         this.decs = decs;
         this.time = time;
     }
+    public Item(String name, String decs) {
+        this.name = name;
+        this.decs = decs;
+    }
 
     public String getId() {
         return id;
