@@ -47,7 +47,6 @@ public class PaintTest {
                                 .toString()
                 )
         );
-        System.setOut(stdout);
     }
     @Test
     public void whenDrawTriangle() {
@@ -67,7 +66,6 @@ public class PaintTest {
                                 .toString()
                 )
         );
-        System.setOut(stdout);
 
     }
 }
