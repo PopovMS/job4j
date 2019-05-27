@@ -46,6 +46,6 @@ public class StartUI {
      * @param args массив с параметрами
      */
     public static void main(String[] args) throws MenuOutException {
-        new StartUI(new ValidateInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
     }
 }
