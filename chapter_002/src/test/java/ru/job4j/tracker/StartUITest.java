@@ -26,7 +26,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
+    public void whenUserAddItemThenTrackerHasNewItemWithSameName() throws MenuOutException {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});
         new StartUI(input, tracker).init();
@@ -34,7 +34,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenUpdateThenTrackerHasUpdatedValue() {
+    public void whenUpdateThenTrackerHasUpdatedValue() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "y"});
@@ -43,7 +43,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenDeleteThenTrackerHasUpdatedArray() {
+    public void whenDeleteThenTrackerHasUpdatedArray() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         Item item2 = tracker.add(new Item("test name2", "desc2"));
@@ -61,7 +61,7 @@ public class StartUITest {
                         + "6. Exit Program.\r\n";
 
     @Test
-    public void whenShowAllItems() {
+    public void whenShowAllItems() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         Item item2 = tracker.add(new Item("test name2", "desc2"));
@@ -80,7 +80,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenFindItemById() {
+    public void whenFindItemById() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         Item item2 = tracker.add(new Item("test name2", "desc2"));
@@ -99,7 +99,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenFindItemByName() {
+    public void whenFindItemByName() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
         Input input = new StubInput(new String[]{"5", item.getName(), "y"});
