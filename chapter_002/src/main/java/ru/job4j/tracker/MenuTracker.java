@@ -4,17 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class AddItem implements UserAction {
-    private int add;
-    private String vol;
+class AddItem extends BaseAction {
 
-    public AddItem(int add, String vol) {
-        this.add = add;
-        this.vol = vol;
-    }
-    @Override
-    public int key() {
-        return add;
+    public AddItem(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -27,28 +20,13 @@ class AddItem implements UserAction {
         System.out.println("------------ New Item with Name : " + item.getName());
         System.out.println("------------ New Item with Description : " + item.getDecs());
     }
-
-    @Override
-    public String info() {
-            return String.format("%d. %s", this.key(), vol);
-        }
 }
 
-class FindAllItem implements UserAction {
-    private int add;
-    private String vol;
+class FindAllItem extends BaseAction {
 
-    public FindAllItem(int add, String vol) {
-        this.add = add;
-        this.vol = vol;
+    public FindAllItem(int key, String name) {
+        super(key, name);
     }
-
-    @Override
-    public int key() {
-            return add;
-        }
-
-
         @Override
         public void execute(Input input, Tracker tracker) {
             int numItem = 0;
@@ -56,24 +34,12 @@ class FindAllItem implements UserAction {
                 System.out.println(String.format("%d. name: %s, desc: %s, id: %s", numItem++, item.getName(), item.getDecs(), item.getId()));
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), vol);
-        }
 }
 
-    class UpdateItem implements UserAction {
-        private int add;
-        private String vol;
+    class UpdateItem extends BaseAction {
 
-        public UpdateItem(int add, String vol) {
-            this.add = add;
-            this.vol = vol;
-        }
-        @Override
-        public int key() {
-            return add;
+        public UpdateItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -91,24 +57,12 @@ class FindAllItem implements UserAction {
                 System.out.println("------------ Item with Id " + itemId + " not found");
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), vol);
-        }
     }
 
-    class DeleteItem implements UserAction {
-        private int add;
-        private String vol;
+    class DeleteItem extends BaseAction {
 
-        public DeleteItem(int add, String vol) {
-            this.add = add;
-            this.vol = vol;
-        }
-        @Override
-        public int key() {
-            return add;
+        public DeleteItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -120,24 +74,12 @@ class FindAllItem implements UserAction {
                 System.out.println("------------ Item with Id " + itemId + " not found");
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), vol);
-        }
     }
 
-    class FindByIdItem implements UserAction {
-        private int add;
-        private String vol;
+    class FindByIdItem extends BaseAction {
 
-        public FindByIdItem(int add, String vol) {
-            this.add = add;
-            this.vol = vol;
-        }
-        @Override
-        public int key() {
-            return add;
+        public FindByIdItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -151,24 +93,12 @@ class FindAllItem implements UserAction {
                 System.out.println("------------ Item with id " + itemId + " not found");
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), vol);
-        }
     }
 
-    class FindByNameItem implements UserAction {
-        private int add;
-        private String vol;
+    class FindByNameItem extends BaseAction {
 
-        public FindByNameItem(int add, String vol) {
-            this.add = add;
-            this.vol = vol;
-        }
-        @Override
-        public int key() {
-            return add;
+        public FindByNameItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -185,34 +115,17 @@ class FindAllItem implements UserAction {
                 System.out.println("------------ Item with name " + itemName + " not found");
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), vol);
-        }
     }
 
-class ExitProgram implements UserAction {
-    private int add;
-    private String vol;
+class ExitProgram extends BaseAction {
 
-    public ExitProgram(int add, String vol) {
-        this.add = add;
-        this.vol = vol;
-    }
-    @Override
-    public int key() {
-        return add;
+    public ExitProgram(int key, String name) {
+        super(key, name);
     }
 
     @Override
     public void execute(Input input, Tracker tracker) {
 
-    }
-
-    @Override
-    public String info() {
-        return String.format("%s. %s", this.key(), vol);
     }
 }
 
