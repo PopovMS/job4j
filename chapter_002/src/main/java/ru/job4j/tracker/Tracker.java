@@ -11,7 +11,7 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private final Item[] items = new Item[100];
+    private final List<Item> items = new ArrayList<>();
     private static final Random RN = new Random();
 
     /**
@@ -25,7 +25,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+        this.items.add(item);
         return item;
     }
 
@@ -37,11 +37,12 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
-        int index = findIndexById(id);
-        if (index > -1) {
-            item.setId(id);
-            this.items[index] = item;
-            result = true;
+        for (int index = 0; index < items.size(); index++) {
+            if (items.get(index).getId().equals(id)) {
+                item.setId(id);
+                items.set(index, item);
+                result = true;
+            }
         }
         return result;
     }
@@ -53,13 +54,12 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        int index = findIndexById(id);
-            if (index > -1) {
-                this.items[index] = null;
-                System.arraycopy(this.items, index + 1, this.items, index, this.items.length - index - 1);
-                this.position--;
+        for (int index = 0; index < items.size(); index++) {
+            if (items.get(index).getId().equals(id)) {
+                items.remove(index);
                 result = true;
             }
+        }
         return result;
     }
 
@@ -68,7 +68,11 @@ public class Tracker {
      * @return массив
      */
     public Item[] findAll() {
-        return Arrays.copyOf(items, position);
+        Item[] item = new Item[items.size()];
+        for (int index = 0; index < items.size(); index++) {
+            item[index] = items.get(index);
+        }
+        return item;
     }
 
     /**
@@ -79,19 +83,15 @@ public class Tracker {
      * @return массив
      */
     public Item[] findByName(String key) {
-        int count = 0;
-        for (int index = 0; index <= findIndexLastItem(); index++) {
-            if (this.items[index].getName().equals(key)) {
-                count++;
+        List<Item> temp = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                temp.add(item);
             }
         }
-        Item[] result = new Item[count];
-        count = 0;
-        for (int index = 0; index <= findIndexLastItem(); index++) {
-            if (this.items[index].getName().equals(key)) {
-                result[count] = this.items[index];
-                count++;
-            }
+        Item[] result = new Item[temp.size()];
+        for (int index = 0; index < temp.size(); index++) {
+            result[index] = items.get(index);
         }
         return result;
     }
@@ -102,40 +102,9 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (int index = 0; index <= findIndexLastItem(); index++) {
-            if (this.items[index].getId().equals(id)) {
-                result = this.items[index];
-                break;
-            }
-        }
-        return result;
-    }
-
-    /**
-     * ищет index массива по id заявки
-     * @param id - id искомой заявки
-     * @return index заявки
-     */
-    private int findIndexById(String id) {
-        int result = -1;
-        for (int index = 0; index != this.items.length; index++) {
-            if (this.items[index] != null && this.items[index].getId().equals(id)) {
-                result = index;
-                break;
-            }
-        }
-        return result;
-    }
-
-    /**
-     * поиск последнего не пустого элемента массива
-     * @return index последнего значения
-     */
-    private int findIndexLastItem() {
-        int result = items.length - 1;
-        for (int index = 0; index != this.items.length; index++) {
-            if (this.items[index] == null) {
-                result = index - 1;
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
+                result = item;
                 break;
             }
         }
