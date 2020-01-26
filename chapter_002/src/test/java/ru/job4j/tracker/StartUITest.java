@@ -30,7 +30,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is("test name"));
+        assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("test name2", "desc2"));
         Input input = new StubInput(new String[]{"3", item.getId(), "y"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is("test name2"));
+        assertThat(tracker.findAll().get(0).getName(), is("test name2"));
     }
 
     private String menu = "0. Add new item.\r\n"

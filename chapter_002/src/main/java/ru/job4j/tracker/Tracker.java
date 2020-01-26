@@ -13,12 +13,6 @@ public class Tracker {
      */
     private final List<Item> items = new ArrayList<>();
     private static final Random RN = new Random();
-
-    /**
-     * Указатель ячейки для новой заявки.
-     */
-    private int position = 0;
-
     /**
      * Метод реализаущий добавление заявки в хранилище
      * @param item новая заявка
@@ -67,12 +61,8 @@ public class Tracker {
      * возвращает массив не нулевых заявок
      * @return массив
      */
-    public Item[] findAll() {
-        Item[] item = new Item[items.size()];
-        for (int index = 0; index < items.size(); index++) {
-            item[index] = items.get(index);
-        }
-        return item;
+    public List<Item> findAll() {
+        return this.items;
     }
 
     /**
@@ -82,18 +72,14 @@ public class Tracker {
      * @param key строковае значение
      * @return массив
      */
-    public Item[] findByName(String key) {
+    public List<Item> findByName(String key) {
         List<Item> temp = new ArrayList<>();
         for (Item item : items) {
             if (item.getName().equals(key)) {
                 temp.add(item);
             }
         }
-        Item[] result = new Item[temp.size()];
-        for (int index = 0; index < temp.size(); index++) {
-            result[index] = items.get(index);
-        }
-        return result;
+        return temp;
     }
     /**
      * ищет по id заявку

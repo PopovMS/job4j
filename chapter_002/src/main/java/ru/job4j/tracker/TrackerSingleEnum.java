@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public enum TrackerSingleEnum {
@@ -39,7 +40,7 @@ public enum TrackerSingleEnum {
      * возвращает массив не нулевых заявок
      * @return массив
      */
-    public Item[] findAll() {
+    public List<Item> findAll() {
         return tracker.findAll();
     }
 
@@ -50,7 +51,7 @@ public enum TrackerSingleEnum {
      * @param key строковае значение
      * @return массив
      */
-    public Item[] findByName(String key) {
+    public List<Item> findByName(String key) {
         return tracker.findByName(key);
     }
     /**

@@ -104,8 +104,8 @@ class FindAllItem extends BaseAction {
         @Override
         public void execute(Input input, Tracker tracker) {
             String itemName = input.ask("Please, provide item name:");
-            Item[] arr = tracker.findByName(itemName);
-            if (arr.length != 0) {
+            List<Item> arr = tracker.findByName(itemName);
+            if (arr.size() != 0) {
                 int numItem = 0;
                 System.out.println("--Found items with this name--");
                 for (Item item : arr) {

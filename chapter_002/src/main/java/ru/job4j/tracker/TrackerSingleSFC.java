@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 public class TrackerSingleSFC {
     private TrackerSingleSFC() {
     }
@@ -41,7 +43,7 @@ public class TrackerSingleSFC {
      * возвращает массив не нулевых заявок
      * @return массив
      */
-    public Item[] findAll() {
+    public List<Item> findAll() {
         return tracker.findAll();
     }
 
@@ -52,7 +54,7 @@ public class TrackerSingleSFC {
      * @param key строковае значение
      * @return массив
      */
-    public Item[] findByName(String key) {
+    public List<Item> findByName(String key) {
         return tracker.findByName(key);
     }
     /**
