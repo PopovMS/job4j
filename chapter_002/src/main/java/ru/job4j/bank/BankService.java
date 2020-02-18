@@ -24,7 +24,6 @@ public class BankService {
             if (!newListAcc.contains(account)) {
                 newListAcc.add(account);
             }
-            users.put(user, newListAcc);
         }
     }
 
@@ -33,6 +32,7 @@ public class BankService {
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
                 result = user;
+                break;
             }
         }
         return result;
@@ -59,8 +59,8 @@ public class BankService {
         if (srcAcc != null || srcAcc.getBalance() > amount) {
             Account destAcc = findByRequisite(destPassport, destRequisite);
             if (destAcc != null) {
+                srcAcc.setBalance(srcAcc.getBalance() - amount);
                 destAcc.setBalance(destAcc.getBalance() + amount);
-                this.addAccount(srcPassport, destAcc);
             }
         }
         return rsl;
