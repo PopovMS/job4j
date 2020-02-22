@@ -1,6 +1,10 @@
 package ru.job4j.tracker;
 
+import java.util.Comparator;
 import java.util.Objects;
+import java.util.Collections;
+
+import static java.lang.CharSequence.compare;
 
 public class Item {
     private String id;
@@ -65,5 +69,13 @@ public class Item {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, decs, time);
+    }
+    @Override
+    public String toString() {
+        return "Item{"
+                + "name='"
+                + name + '\''
+                + ", Description="
+                + decs + '}';
     }
 }
