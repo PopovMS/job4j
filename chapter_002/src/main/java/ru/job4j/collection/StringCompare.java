@@ -14,11 +14,10 @@ public class StringCompare implements Comparator<String> {
             result = Character.compare(vol1[index], vol2[index]);
             if (result != 0) {
                 break;
-            } else {
-                if (index == minLen - 1 && minLen != maxLen) {
-                    result = vol1.length < vol2.length ? -1 : 1;
-                }
             }
+        }
+        if (result == 0) {
+            result = Integer.compare(vol1.length, vol2.length);
         }
         return result;
     }
