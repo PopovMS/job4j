@@ -12,17 +12,16 @@ import static org.junit.Assert.assertThat;
 public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    final String separator = System.getProperty("line.separator");
 
     @Before
     public void loadOutput() {
-        System.out.println("execute before method");
         System.setOut(new PrintStream(this.out));
     }
 
     @After
     public void backOutput() {
         System.setOut(this.stdout);
-        System.out.println("execute after method");
     }
 
     @Test
@@ -52,13 +51,13 @@ public class StartUITest {
         assertThat(tracker.findAll().get(0).getName(), is("test name2"));
     }
 
-    private String menu = "0. Add new item.\r\n"
-                        + "1. Show all items.\r\n"
-                        + "2. Edit item.\r\n"
-                        + "3. Delete item.\r\n"
-                        + "4. Find item by Id.\r\n"
-                        + "5. Find items by name.\r\n"
-                        + "6. Exit Program.\r\n";
+    private String menu = "0. Add new item."
+                        + separator + "1. Show all items."
+                        + separator + "2. Edit item."
+                        + separator + "3. Delete item."
+                        + separator + "4. Find item by Id."
+                        + separator + "5. Find items by name."
+                        + separator + "6. Exit Program.";
 
     @Test
     public void whenShowAllItems() throws MenuOutException {
@@ -72,8 +71,8 @@ public class StartUITest {
                 Is.is(
                         new StringBuilder()
                                 .append(menu
-                                        + String.format("%d. name: %s, desc: %s, id: %s", 0, item.getName(), item.getDecs(), item.getId()) + "\r\n"
-                                        + String.format("%d. name: %s, desc: %s, id: %s", 1, item2.getName(), item2.getDecs(), item2.getId()) + "\r\n")
+                                        + separator + String.format("%d. name: %s, desc: %s, id: %s", 0, item.getName(), item.getDecs(), item.getId())
+                                        + separator + String.format("%d. name: %s, desc: %s, id: %s", 1, item2.getName(), item2.getDecs(), item2.getId()) + separator)
                                 .toString()
                 )
         );
@@ -91,8 +90,8 @@ public class StartUITest {
                 Is.is(
                         new StringBuilder()
                                 .append(menu
-                                        + "--Found item with this id--\r\n"
-                                        + String.format(" name: %s, desc: %s, id: %s", item.getName(), item.getDecs(), item.getId()) + "\r\n")
+                                        + separator + "--Found item with this id--"
+                                        + separator + String.format(" name: %s, desc: %s, id: %s", item.getName(), item.getDecs(), item.getId()) + separator)
                                 .toString()
                 )
         );
@@ -109,8 +108,8 @@ public class StartUITest {
                 Is.is(
                         new StringBuilder()
                                 .append(menu
-                                        + "--Found items with this name--\r\n"
-                                        + String.format("%d. name: %s, desc: %s, id: %s", 0, item.getName(), item.getDecs(), item.getId()) + "\r\n")
+                                        + separator + "--Found items with this name--"
+                                        + separator + String.format("%d. name: %s, desc: %s, id: %s", 0, item.getName(), item.getDecs(), item.getId()) + separator)
                                 .toString()
                 )
         );
