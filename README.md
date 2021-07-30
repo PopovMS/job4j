@@ -1,8 +1,7 @@
 # Репозитарий Михаила Попова
 
 Я прохожу обучение по курсу Job4j.
-
-Планирую закончить курс в течение лета 2020-го 
+ 
 
 
 [![Build Status](https://travis-ci.org/PopovMS/job4j.svg?branch=master)](https://travis-ci.org/PopovMS/job4j)
