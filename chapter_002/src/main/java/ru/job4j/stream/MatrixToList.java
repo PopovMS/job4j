@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class MatrixToList {
     public List<Integer> tolist(Integer[][] matrix) {
        return Stream.of(matrix)
-                    .flatMap(e -> Arrays.stream(e))
+                    .flatMap(Arrays::stream)
                                         .collect(Collectors.toList());
     }
 }
