@@ -68,7 +68,6 @@ public class BankService {
      * @return возвращает найденый счет пользователя
      */
     public Account findByRequisite(String passport, String requisite) {
-        Account result = null;
         User user = findByPassport(passport);
         if (user != null) {
             return users.get(user)
@@ -77,7 +76,7 @@ public class BankService {
                         .findFirst()
                         .orElse(null);
         }
-        return result;
+        return null;
     }
 
     /**
