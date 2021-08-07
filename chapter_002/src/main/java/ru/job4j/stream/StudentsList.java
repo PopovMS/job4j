@@ -12,11 +12,10 @@ import java.util.stream.Collectors;
 public class StudentsList {
     public Map<String, Student> toMap(List<Student> list) {
         return list.stream()
-                    .distinct()
                     .collect(Collectors.toMap(
-                            name -> name.getSurname(),
+                            Student::getSurname,
                             student -> student,
-                            (f, s) -> f.equals(s) ? f : s
+                            (f, s) -> s
                     ));
     }
 }
