@@ -7,7 +7,7 @@ import java.util.Objects;
  * Переопределены hashCode  и equals
  * @author Popov Mikhail (m.popov83@gmail.com)
  */
-public class Student {
+public class Student implements Comparable<Student> {
     private int score;
 
     private String surname;
@@ -41,5 +41,10 @@ public class Student {
     @Override
     public int hashCode() {
         return Objects.hash(score, surname);
+    }
+
+    @Override
+    public int compareTo(Student another) {
+        return Integer.compare(score, another.score);
     }
 }
