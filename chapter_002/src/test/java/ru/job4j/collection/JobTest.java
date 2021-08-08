@@ -37,7 +37,7 @@ public class JobTest {
                 new Job("Fix bug", 2),
                 new Job("X task", 0)
         );
-        List<Job> result = Arrays.asList(
+        List<Job> result = List.of(
                 new Job("Fix bug", 1),
                 new Job("Fix bug", 2),
                 new Job("Fix bug", 4),
