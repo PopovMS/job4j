@@ -8,38 +8,44 @@ public class Person {
     private int weight;
 
     static class Builder {
-        private Person person;
-
-        public Builder() {
-            person = new Person();
-        }
+        private String name;
+        private String surname;
+        private int age;
+        private int height;
+        private int weight;
 
         Builder buildName(String name) {
-            person.name = name;
+            this.name = name;
             return this;
         }
 
         Builder buildSurname(String surname) {
-            person.surname = surname;
+            this.surname = surname;
             return this;
         }
 
         Builder buildAge(int age) {
-            person.age = age;
+            this.age = age;
             return this;
         }
 
         Builder buildHeight(int height) {
-            person.height = height;
+            this.height = height;
             return this;
         }
 
         Builder buildWeight(int weight) {
-            person.weight = weight;
+            this.weight = weight;
             return this;
         }
 
         Person build() {
+            Person person = new Person();
+            person.name = name;
+            person.surname = surname;
+            person.age = age;
+            person.height = height;
+            person.weight = weight;
             return person;
         }
     }
