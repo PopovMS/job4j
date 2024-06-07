@@ -26,7 +26,6 @@ public class UniqueText {
                 break;
             }
         }
-        // for-each text -> hashSet.contains
         return rsl;
     }
 }

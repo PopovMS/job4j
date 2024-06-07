@@ -4,7 +4,7 @@ import ru.job4j.puzzle.firuges.Cell;
 import ru.job4j.puzzle.firuges.Figure;
 
 /**
- * //TODO add comments.
+ * TODO add comments.
  *
  * @author Popov Mikhail (m.popov83@gmail.com)
  * @version $Id$
