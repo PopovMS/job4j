@@ -73,8 +73,8 @@ public class SqlTracker implements Store {
         try (PreparedStatement preparedStatement =
                      connection.prepareStatement("UPDATE items SET name = ?, created = ? WHERE ID = ?")) {
             preparedStatement.setString(1, item.getName());
-            preparedStatement.setTimestamp(2,Timestamp.valueOf(item.getCreated()));
-            preparedStatement.setInt(3,id);
+            preparedStatement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            preparedStatement.setInt(3, id);
             result  = preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,7 +86,7 @@ public class SqlTracker implements Store {
     public void delete(int id) {
         try (PreparedStatement preparedStatement =
                      connection.prepareStatement("DELETE FROM items WHERE ID = ?")) {
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,7 +127,7 @@ public class SqlTracker implements Store {
     public Item findById(int id) {
         Item item = new Item();
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM items WHERE id = ?")) {
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
                     item.setName(resultSet.getString("name"));
