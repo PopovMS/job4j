@@ -1,51 +1,51 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
+import ru.job4j.action.*;
+
+import java.util.Arrays;
+
 import java.util.List;
 
-/**
- * @version $Id$
- * @since 0.1
- */
 public class StartUI {
-    private final Input input;
+    private final Output out;
 
-    /**
-     * Хранилище заявок.
-     */
-    private final Tracker tracker;
-
-    /**
-     * Конструтор инициализирующий поля.
-     * @param input ввод данных.
-     * @param tracker хранилище заявок.
-     */
-    public StartUI(Input input, Tracker tracker) {
-        this.input = input;
-        this.tracker = tracker;
+    public StartUI(Output out) {
+        this.out = out;
     }
 
-    /**
-     * Основой цикл программы.
-     */
-    public void init() throws MenuOutException {
-        MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        menu.fillActions();
-        int[] range = new int[menu.getActionsLentgh()];
-        for (int i = 0; i < range.length; i++) {
-            range[i] = i;
+    public void init(Input input, Tracker tracker, List<UserAction> actions) {
+        boolean run = true;
+        while (run) {
+            showMenu(actions);
+            int select = input.askInt("Выбрать: ");
+            if (select < 0 || select >= actions.size()) {
+                out.println("Неверный ввод, вы можете выбрать: 0 .. " + (actions.size() - 1));
+                continue;
+            }
+            UserAction action = actions.get(select);
+            run = action.execute(input, tracker);
         }
-        do {
-            menu.show();
-            menu.select(input.ask("select:", range));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
 
-       /**
-     * Запускт программы.
-     * @param args массив с параметрами
-     */
-    public static void main(String[] args) throws MenuOutException {
-        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
+    private void showMenu(List<UserAction> actions) {
+        out.println("Меню:");
+        for (int i = 0; i < actions.size(); i++) {
+            out.println(i + ". " + actions.get(i).name());
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Output output = new ConsoleOutput();
+        Input input = new ValidateInput(output, new ConsoleInput());
+        Tracker tracker = new Tracker();
+        List<UserAction> actions = Arrays.asList(new Create(output),
+                new FindAll(output),
+                new Replace(output),
+                new Delete(output),
+                new FindById(output),
+                new FindByName(output),
+                new Exit(output));
+        new StartUI(output).init(input, tracker, actions);
     }
 }
