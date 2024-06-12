@@ -1,0 +1,35 @@
+2024-06-12 10:13:02.864985+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+INSERT INTO items (name, created) VALUES (?, ?) [42104-222]
+2024-06-12 10:13:02.880977+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+delete from items [42104-222]
+2024-06-12 10:18:26.524600+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+INSERT INTO items (name, created) VALUES (?, ?) [42104-222]
+2024-06-12 10:18:26.568574+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+delete from items [42104-222]
+2024-06-12 10:20:08.760079+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOGLOCK" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42104-222]
+2024-06-12 10:23:12.966189+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
+Table "ITEMS" not found; SQL statement:
+INSERT INTO items (name, created) VALUES (?, ?) [42102-222]
+2024-06-12 10:23:12.990175+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
+Table "ITEMS" not found; SQL statement:
+delete from items [42102-222]
+2024-06-12 10:51:00.309572+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
+Table "ITEMS" not found; SQL statement:
+SELECT * FROM items WHERE id = ? [42102-222]
+2024-06-12 10:51:00.335556+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
+Table "ITEMS" not found; SQL statement:
+delete from items [42102-222]
+2024-06-12 10:52:14.853903+05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "ITEMS" не найдена
+Table "ITEMS" not found; SQL statement:
+delete from items [42102-222]
