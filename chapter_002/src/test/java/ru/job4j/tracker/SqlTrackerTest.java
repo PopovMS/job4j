@@ -100,4 +100,19 @@ public class SqlTrackerTest {
         List<Item> expect = Arrays.asList(item);
         assertThat(tracker.findByName(item.getName())).isEqualTo(expect);
     }
+
+    @Test
+    public void whenDeleteItemAndCheckOthers() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("test1");
+        Item item2 = new Item("test2");
+        Item item3 = new Item("test3");
+        tracker.add(item);
+        tracker.add(item2);
+        tracker.add(item3);
+        tracker.delete(item.getId());
+        assertThat(tracker.findById(item.getId())).isNull();
+        assertThat(tracker.findById(item2.getId())).isEqualTo(item2);
+        assertThat(tracker.findById(item3.getId())).isEqualTo(item3);
+    }
 }
